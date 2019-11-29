@@ -1,5 +1,6 @@
 const users = {
     awitte97: {
+        profile: {
         username: 'awitte97',
         password: 'password',
         firstname: 'Andrew',
@@ -8,19 +9,21 @@ const users = {
         age: 22,
         log: [
             {
-                date: new Date("2019-11-6"),
-                exercize: "Push-ups",
+                date: new Date('2019-11-6'),
+                exercize: 'Push-ups',
                 reps: 30
 
             },
             {
-                date: new Date("2019-11-6"),
-                exercize: "Run",
+                date: new Date('2019-11-6'),
+                exercize: 'Run',
                 distanceInMiles: 4
             },
         ]
+    }
     },
     bob1: {
+        profile: {
         username: 'bob',
         password: 'passwordbob',
         firstname: 'Bob',
@@ -29,16 +32,17 @@ const users = {
         age: 21,
         log: [
             {
-                date: new Date("2019-11-2"),
-                exercize: "Sit-ups",
+                date: new Date('2019-11-2'),
+                exercize: 'Sit-ups',
                 reps: 50
             },
             {
-                date: new Date("2019-11-2"),
-                exercize: "Shoulder press",
+                date: new Date('2019-11-2'),
+                exercize: 'Shoulder press',
                 weightInLbs: 20
             }
         ]
+    }
     }
 };
 

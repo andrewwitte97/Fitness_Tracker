@@ -31,9 +31,9 @@
           <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link class="button is-primary" to="/signup" v-if="!loggedIn">Sign Up</router-link>
-              <router-link class="button is-light" to="/login" v-if="!loggedIn">Log in</router-link>
-              <router-link class="button is-light" v-if="loggedIn">Log out</router-link>
+              <router-link class="button is-primary" to="/signup">Sign Up</router-link>
+              <router-link class="button is-light" to="/login">Log in</router-link>
+              <router-link class="button is-light">Log out</router-link>
             </div>
           </div>
         </div>

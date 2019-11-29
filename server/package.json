@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "license": "ISC",
   "dependencies": {
     "check-node-version": "^4.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase-admin": "^8.7.0",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

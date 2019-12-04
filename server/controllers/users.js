@@ -6,6 +6,8 @@ const usersController = express.Router();
 const profileRouter = require('./Profile.js');
 const logRouter = require('./Log')
 
+usersController.use(morgan('tiny'));
+
 
 usersController.param('username', (req, res, next, username) => {
     const user = users[username];
@@ -26,6 +28,23 @@ usersController.get('/', (req, res) => {
 usersController.get('/:username', (req, res) => {
     res.send(users[req.username]);
 });
+
+
+// Get authentication info
+usersController.get('/:username/authentication', (req, res) => {
+    res.send(req.user.authentication);
+});
+
+// Get username
+usersController.get('/:username/username', (req, res) => {
+    res.send(req.username);
+});
+
+// Get password
+usersController.get('/:username/password', (req, res) => {
+    res.send(req.user.authentication.password);
+});
+
 
 // Add a new user
 usersController.post('/', (req, res) => {

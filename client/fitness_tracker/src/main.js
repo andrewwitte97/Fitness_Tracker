@@ -8,9 +8,6 @@ import '@fortawesome/fontawesome-free/css/all.css'
 Vue.config.productionTip = false
 
 new Vue({
-  data: {
-    loggedIn: false
-  },
   router,
   render: h => h(App)
 }).$mount('#app')

@@ -4,6 +4,7 @@ const users = require('../models/users');
 
 const profileRouter = express.Router();
 
+profileRouter.use(express.json());
 profileRouter.use(morgan('tiny'));
 
 // Get profile
@@ -11,18 +12,25 @@ profileRouter.get('/', (req, res) => {
     res.send(req.user.profile);
 });
 
-profileRouter.get('/', (req, res) => {
-    res.send(req.user.profile.username)
-});
-
-// Get password
-profileRouter.get('/password', (req, res) => {
-    res.send(req.user.profile.password);
-});
 
 // Get first name
 profileRouter.get('/firstname', (req, res) => {
     res.send(req.user.profile.firstname)
+});
+
+
+// Update profile
+profileRouter.post('/', (req, res) => {
+    const user = req.user;
+    const username = req.username;
+    const profile = req.body.profile;
+    if (profile) {
+        user.profile = profile;
+        users[username] = user;
+        res.send(profile);
+    } else {
+        res.status(404).send();
+    }
 });
 
 // Get lastname
@@ -41,7 +49,7 @@ profileRouter.get('/age', (req, res) => {
 });
 
 // Update password
-profileRouter.put('/password', (req, res) => {
+profileRouter.post('/password', (req, res) => {
     const user = req.user;
     const username = req.username;
     const newPassword = req.query.password;
@@ -55,9 +63,9 @@ profileRouter.put('/password', (req, res) => {
 });
 
 // Update firstname
-profileRouter.put('/firstname', (req, res) => {
+profileRouter.post('/firstname', (req, res) => {
     const user = req.user;
-    const username = req.username;
+    const username = user.profile.username;
     const newFirstname = req.query.firstname;
     if (newFirstname) {
         user.profile.firstname = newFirstname;
@@ -69,7 +77,7 @@ profileRouter.put('/firstname', (req, res) => {
 });
 
 // Update lastname
-profileRouter.put('/lastname', (req, res) => {
+profileRouter.post('/lastname', (req, res) => {
     const user = req.user;
     const username = req.username;
     const newLastname = req.query.lastname;
@@ -83,7 +91,7 @@ profileRouter.put('/lastname', (req, res) => {
 });
 
 // Update gender
-profileRouter.put('/gender', (req, res) => {
+profileRouter.post('/gender', (req, res) => {
     const user = req.user;
     const username = req.username;
     const newGender = req.query.gender;

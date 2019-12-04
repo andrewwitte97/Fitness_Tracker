@@ -1,7 +1,7 @@
 const users = {
-    awitte97: {
+    awitte: {
         profile: {
-        username: 'awitte97',
+        username: 'awitte',
         password: 'password',
         firstname: 'Andrew',
         lastname: 'Witte',
@@ -10,13 +10,13 @@ const users = {
         log: [
             {
                 date: new Date('2019-11-6'),
-                exercize: 'Push-ups',
+                excersize: 'Push-ups',
                 reps: 30
 
             },
             {
                 date: new Date('2019-11-6'),
-                exercize: 'Run',
+                excersize: 'Run',
                 distanceInMiles: 4
             },
         ]
@@ -33,12 +33,12 @@ const users = {
         log: [
             {
                 date: new Date('2019-11-2'),
-                exercize: 'Sit-ups',
+                excersize: 'Sit-ups',
                 reps: 50
             },
             {
                 date: new Date('2019-11-2'),
-                exercize: 'Shoulder press',
+                excersize: 'Shoulder press',
                 weightInLbs: 20
             }
         ]

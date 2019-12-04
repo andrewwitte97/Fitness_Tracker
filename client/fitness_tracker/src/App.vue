@@ -24,7 +24,6 @@
             <router-link class="navbar-item" to ="/friends"><i class="fas fa-user-friends"></i>Friends</router-link>
             <router-link class="navbar-item" :to="{ name: 'profile', params: { username: username} }" v-if="loggedIn"><i class="fas fa-id-card"></i>Profile</router-link>
             <router-link class="navbar-item" to ="/excersize"><i class="fas fa-dumbbell"></i>Excersize</router-link>
-
           </div>
 
           <div class="navbar-end">
@@ -41,7 +40,6 @@
     </div>
 
     <router-view @loggedIn="onLogIn" />
-    <p>{{ username }}</p>
     <Footer></Footer>
   </div>
 </template>

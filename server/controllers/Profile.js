@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const users = require('../models/Users');
+const users = require('../models/users');
 
 const profileRouter = express.Router();
 
@@ -11,14 +11,18 @@ profileRouter.get('/', (req, res) => {
     res.send(req.user.profile);
 });
 
+profileRouter.get('/', (req, res) => {
+    res.send(req.user.profile.username)
+});
+
 // Get password
 profileRouter.get('/password', (req, res) => {
-    res.send(req.user.password);
+    res.send(req.user.profile.password);
 });
 
 // Get first name
 profileRouter.get('/firstname', (req, res) => {
-    res.send(req.user.firstname)
+    res.send(req.user.profile.firstname)
 });
 
 // Get lastname
@@ -28,7 +32,7 @@ profileRouter.get('/lastname', (req, res) => {
 
 // Get gender
 profileRouter.get('/gender', (req, res) => {
-    res.send(req.user.gender);
+    res.send(req.user.profile.gender);
 });
 
 // Get age
@@ -42,9 +46,9 @@ profileRouter.put('/password', (req, res) => {
     const username = req.username;
     const newPassword = req.query.password;
     if (newPassword) {
-        user.password = newPassword;
+        user.profile.password = newPassword;
         users[username] = user;
-        res.send(users[username].password);
+        res.send(users[username].profile.password);
     } else {
         res.status(404).send();
     }
@@ -56,9 +60,9 @@ profileRouter.put('/firstname', (req, res) => {
     const username = req.username;
     const newFirstname = req.query.firstname;
     if (newFirstname) {
-        user.firstname = newFirstname;
+        user.profile.firstname = newFirstname;
         users[username] = user;
-        res.send(users[username].firstname);
+        res.send(users[username].profile.firstname);
     } else {
         res.status(404).send();
     }

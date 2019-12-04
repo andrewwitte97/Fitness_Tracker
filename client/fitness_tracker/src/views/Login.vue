@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-      <form v-on:submit="login">
+    <form v-on:submit="login">
       <div class="field">
         <label class="label">Username</label>
         <div class="control">
@@ -20,6 +20,7 @@
         </div>
       </div>
     </form>
+    <p style="color: red">{{ test }}</p>
   </div>
 </template>
 
@@ -29,11 +30,14 @@
   width: 300px;
   margin: auto;
 }
+.error {
+  color: "red"
+}
 </style>
 
 <script>
 const axios = require('axios');
-const root = 'http://localhost:3000/users';
+const root = 'http://localhost:3001/users';
 const errorMessage = 'Username or password is incorrect!'
 export default {
   data () {
@@ -52,14 +56,14 @@ export default {
   methods: {
     login: function () {
       axios
-        .get(`${root}/${this.username}`)
+        .get(`${root}/${this.username}/authentication`)
         .then((response) => {
-          const user = response.data;
-          if (this.password === user.password) {
-            this.$emit('loggedIn', user.username);
+          const auth = response.data;
+          if (this.password === auth.password) {
+            this.$emit('loggedIn', auth.username);
             this.$router.replace({ path: '/' });
           } else {
-            this.test = errorMessage
+            this.test = errorMessage;
           }
         })
         .catch(this.test = errorMessage);

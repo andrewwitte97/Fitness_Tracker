@@ -24,7 +24,7 @@
           <td>Age</td>
           <td>
             <div class="control">
-              <input class="input" type="number"/>
+              <input class="input" type="number" :value="age"/>
             </div>
           </td>
         </tr>
@@ -49,7 +49,7 @@
 
 <script>
 const axios = require('axios');
-const root = 'http://localhost:3000/users';
+const root = 'http://localhost:3001/users';
 export default {
   data () {
     return {
@@ -58,10 +58,48 @@ export default {
       lastname: ''
     }
   },
-  created () {
-    this.username = this.$route.params.username;
+computed: {
+    profile: function () {
+      return {
+        firstname: this.firstname,
+        lastname: this.lastname,
+        age: this.age
+      }
+    }
+  },
+
+
+
+
+  async created () {
+    this.username = this.$parent.username;
+
+    let response;
+    try {
+      response = await axios.get(root + '/' + this.username + '/Profile');
+      this.firstname = response.data.firstname;
+      this.lastname = response.data.lastname;
+      this.age = response.data.age;
+    } catch (error){
+      console.log(error);
+    }
+    },
+
+    methods: {
+  submit: async function () {
+      let response;
+      try {
+        response = await axios.put(root + '/' + this.username + '/profile', {
+          profile: this.profile
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 }
+
 </script>
 
 <style>

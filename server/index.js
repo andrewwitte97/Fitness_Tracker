@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const userController = require('./controllers/users');
+const usersController = require('./controllers/users');
 const admin = require('firebase-admin')
 
 const app = express();
@@ -21,11 +21,9 @@ app.all('/*', function(req, res, next) {
     }
   });
 
-
-app.get ('/', (req, res) => res.send("Hello"));
-
+app.get('/', (req, res) => res.send("Hello"));
 app.get('/port', (req, res,) => res.send("Using port: " + PORT));
 
-app.use ('/users', userController );
+app.use('/users', usersController);
 
 app.listen(PORT, () => console.log(`Running on on http://.localhost:${PORT}`));

@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const users = require('../models/Users');
+const users = require('../models/users');
 
 const logRouter = express.Router({mergeParams: true});
 

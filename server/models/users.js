@@ -24,10 +24,10 @@ const users = {
             }
         ]
     },
-    test1: {
+    test: {
         authentication: {
-            username: 'test1',
-            password: 'password1',
+            username: 'test',
+            password: 'test',
         },
         profile: {
             firstname: 'test',

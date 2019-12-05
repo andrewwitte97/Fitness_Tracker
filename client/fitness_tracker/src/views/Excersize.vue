@@ -4,16 +4,13 @@
     <br>
     <p>{{ username }}</p>
     <br>
-    <form>
-      <label for="date">Select Date:</label>
-      <input type="date" id="date" name="log-date" />
-      <br>
-      <br>
-      <input id="button" class="button is-link" type="submit" value="Get Entries"/>
-      <br>
-      <br>
-      <button id="button" class="button is-primary">Show All</button>
-    </form>
+    <label class="option-label">Date:</label>
+    <input class="option-field" type="date" v-model="date"/>
+    <label class="option-label">Activity:</label>
+    <input class="option-field" type="text" v-model="activity"/>
+    <label class="option-label">Description:</label>
+    <input class="option-field" type="text" v-model="description"/>
+    <button v-on:click="createEntry">Add Entry</button>
     <table class="table">
       <thead>
         <tr>
@@ -50,6 +47,19 @@
 .table {
   margin: auto;
 }
+.add-button {
+  margin-right: 10px;
+  width: 60px;
+}
+.option-label {
+  margin-right: 10px;
+}
+.option-field {
+  margin-right: 20px;
+}
+
+
+
 </style>
 
 <script>
@@ -63,6 +73,9 @@ export default {
   data () {
     return {
         username: '',
+        date: '',
+        activity: '',
+        description: '',
         log: []
     }
   },
@@ -70,6 +83,38 @@ export default {
     this.username = this.$parent.username;
     const response = await axios.get(root + '/' + this.username + '/log');
     this.log = response.data;
+  },
+  methods: {
+    createEntry: async function () {
+      console.log(this.log);
+      const newEntry = {
+        date: this.date,
+        activity: this.activity,
+        description: this.description
+      }
+      this.log.push(newEntry);
+      let response;
+      try {
+        response = await axios.post(root + '/' + this.username + '/log', {
+          log: this.log
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    deleteEntry: async function (index) {
+      this.log.splice(index, 1);
+let response;
+      try {
+        response = axios.post(root + '/' + this.username + '/log', {
+          log: this.log
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error)
+      }
+    }
   }
 }
 </script>

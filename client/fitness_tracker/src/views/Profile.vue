@@ -8,7 +8,7 @@
           <td>First name</td>
           <td>
             <div class="control">
-              <input class="input" type="text" :value="firstname"/>
+              <input class="input" type="text" v-model="firstname">
             </div>
           </td>
         </tr>
@@ -16,7 +16,7 @@
           <td>Last name</td>
           <td>
             <div class="control">
-              <input class="input" type="text" :value="lastname"/>
+              <input class="input" type="text" v-model="lastname">
             </div>
           </td>
         </tr>
@@ -24,7 +24,7 @@
           <td>Age</td>
           <td>
             <div class="control">
-              <input class="input" type="number" :value="age"/>
+              <input class="input" type="number" v-model="age">
             </div>
           </td>
         </tr>
@@ -55,7 +55,9 @@ export default {
     return {
       username: '',
       firstname: '',
-      lastname: ''
+      lastname: '',
+      age: '',
+      gender: ''
     }
   },
 computed: {
@@ -63,7 +65,8 @@ computed: {
       return {
         firstname: this.firstname,
         lastname: this.lastname,
-        age: this.age
+        age: this.age,
+        gender: this.gender
       }
     }
   },
@@ -80,6 +83,7 @@ computed: {
       this.firstname = response.data.firstname;
       this.lastname = response.data.lastname;
       this.age = response.data.age;
+      this.gender = response.data.gender;
     } catch (error){
       console.log(error);
     }
@@ -87,9 +91,10 @@ computed: {
 
     methods: {
   submit: async function () {
+    console.log(this.profile);
       let response;
       try {
-        response = await axios.put(root + '/' + this.username + '/profile', {
+        response = await axios.post(root + '/' + this.username + '/profile', {
           profile: this.profile
         });
         console.log(response);

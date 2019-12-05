@@ -3,7 +3,7 @@
     <div id="nav">
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-
+          
           <a
             role="button"
             class="navbar-burger burger"
@@ -16,7 +16,7 @@
             <span aria-hidden="true"></span>
           </a>
         </div>
-
+        
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <router-link class="navbar-item" to="/"><i class="fas fa-home"></i>Home</router-link>

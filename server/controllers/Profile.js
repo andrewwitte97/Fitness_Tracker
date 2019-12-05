@@ -27,7 +27,7 @@ profileRouter.post('/', (req, res) => {
     if (profile) {
         user.profile = profile;
         users[username] = user;
-        res.send(profile);
+        res.send(users[username].profile);
     } else {
         res.status(404).send();
     }

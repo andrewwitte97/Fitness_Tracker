@@ -38,13 +38,12 @@
 <script>
 const axios = require('axios');
 const root = 'http://localhost:3001/users';
-const errorMessage = 'Username or password is incorrect!'
 export default {
   data () {
     return {
       loggedIn: false,
-      username: 'awitte1',
-      password: 'password1',
+      username: '',
+      password: '',
       test: ''
     }
   },
@@ -63,10 +62,10 @@ export default {
             this.$emit('loggedIn', auth.username);
             this.$router.replace({ path: '/' });
           } else {
-            this.test = errorMessage;
+            this.test = 'Username or password is incorrect!';
           }
         })
-        .catch(this.test = errorMessage);
+        .catch(this.test = 'Could not connect to server!');
     }
   }
 }

@@ -4,6 +4,7 @@ const users = require('../models/users');
 
 const logRouter = express.Router({mergeParams: true});
 
+logRouter.use(express.json());
 logRouter.use(morgan('tiny'));
 
 // Get log
@@ -33,15 +34,14 @@ logRouter.get('/:date', (req, res) => {
 
 // Add an entry to the exercize log
 logRouter.post('/', (req, res) => {
-    const log = req.user.log;
-    const date = new Date(req.query.date);
-    const newEntry = req.query;
-    newEntry.date = date;
-    log.push(newEntry);
-    if (newEntry) {
-        res.status(201).send(newEntry);
-    }
-    else {
+    const user = req.user;
+    const username = req.username;
+    const log = req.body.log;
+    if (log) {
+        user.log = log;
+        users[username] = user;
+        res.send(users[username].log);
+    } else {
         res.status(404).send();
     }
 });

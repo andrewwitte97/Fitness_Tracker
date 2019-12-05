@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header></Header>
     <div id="nav">
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -29,9 +30,10 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-               <router-link class="button is-primary" to="/signup" v-if="!loggedIn">Sign Up</router-link>
+               <router-link class="button is-info" to="/signup" v-if="!loggedIn">Sign Up</router-link>
                 <router-link class="button is-light" to="/login" v-if="!loggedIn">Log in</router-link>
-                <router-link class="button is-light" to="/" v-if="loggedIn">Log out</router-link>
+                <button class="button is-light" to="/" v-if="loggedIn" v-on:click="logOut">Log out</button>
+
               </div>
             </div>
           </div>
@@ -56,10 +58,10 @@
 }
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffaf01;
 }
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #73ee00;
 }
 </style>
 
@@ -68,11 +70,13 @@
 
 <script>
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 export default {
     name: 'app',
     components: {
-      Footer
+      Footer,
+      Header
     },
     data () {
     return {
@@ -81,13 +85,14 @@ export default {
     };
   },
   methods: {
-    onLogIn (username) {
+    onLogIn: function  (username) {
       this.loggedIn = true;
       this.username = username;
     },
-    logOut: function (event) {
+    logOut: function () {
       this.loggedIn = false;
       this.username = '';
+      this.$router.replace({ path: '/' })
     }
   }
 };

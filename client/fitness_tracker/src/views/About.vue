@@ -36,6 +36,9 @@ const root = 'http://localhost:3001/users';
 export default {
   data: ()=> ({
     options: ['user', 'firstname']
-  })
+  }),
+  fetchOptions(search, loading){
+    //api('user?search=${search')
+  }
 }
 </script>

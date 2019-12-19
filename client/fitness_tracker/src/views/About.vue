@@ -6,6 +6,8 @@
     <section class="hero is-small is-info is-bold">
   <div class="hero-body">
      <div class="container">
+       <v-select :options="options"></v-select>
+
     <p>
 
       This is an application developed to keep track of Fitness.<br>
@@ -22,5 +24,14 @@
 </figure>
 </section>
     
+
   </div>
 </template>
+
+<script>
+export default {
+  data: ()=> ({
+    options: ['Hello', 'World']
+  })
+}
+</script>

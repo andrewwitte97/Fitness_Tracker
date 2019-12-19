@@ -40,7 +40,6 @@
         </div>
       </nav>
     </div>
-    <Autocomplete></Autocomplete>
 
     <router-view @loggedIn="onLogIn" />
     <Footer></Footer>
@@ -72,14 +71,12 @@
 <script>
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Autocomplete from './components/Autocomplete';
 
 export default {
     name: 'app',
     components: {
       Footer,
-      Header,
-      Autocomplete
+      Header
     },
     data () {
     return {

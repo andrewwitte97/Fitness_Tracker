@@ -12,7 +12,8 @@
     "check-node-version": "^4.0.1",
     "express": "^4.17.1",
     "firebase-admin": "^8.7.0",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "vue-select": "^3.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

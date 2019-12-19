@@ -29,9 +29,13 @@
 </template>
 
 <script>
+
+const axios = require('axios');
+const root = 'http://localhost:3001/users';
+
 export default {
   data: ()=> ({
-    options: ['Hello', 'World']
+    options: ['user', 'firstname']
   })
 }
 </script>

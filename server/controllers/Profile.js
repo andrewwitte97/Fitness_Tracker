@@ -33,6 +33,11 @@ profileRouter.post('/', (req, res) => {
     }
 });
 
+
+profileRouter.get('/user', (req,res) => {
+    res.send(profileRouter.profileRouter)
+})
+
 // Get lastname
 profileRouter.get('/lastname', (req, res) => {
     res.send(req.user.lastname)

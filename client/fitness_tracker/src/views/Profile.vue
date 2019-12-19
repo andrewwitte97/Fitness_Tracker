@@ -49,7 +49,6 @@
 
 <script>
 
-
 const axios = require('axios');
 const root = 'http://localhost:3001/users';
 export default {
@@ -106,3 +105,16 @@ computed: {
     }
   }
 }
+
+
+
+</script>
+
+<style>
+.table {
+  margin: auto;
+}
+#submit {
+  width: 300px;
+}
+</style>
